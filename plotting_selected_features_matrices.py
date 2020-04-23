@@ -8,6 +8,8 @@ from paths import *
 
 """
 Plotting matrices of selected features.
+Run as
+python plotting_selected_features_matrices.py
 
 """
 

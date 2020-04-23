@@ -50,8 +50,8 @@ elif type_mode == 'Functional':
     rank_mat     = 'A_fc19'
     
 num_examples     = 54
-data_mat 	      = scipy.io.loadmat(SAVING_MAT+'GlobalResults_'+resolution+'_'+connectivity+'_accuracy.mat')
-df_selected_subj = pd.read_csv('Data Description/selected_subjects_27.csv', index_col=0)
+data_mat 	     = scipy.io.loadmat(SAVING_MAT+'GlobalResults_'+resolution+'_'+connectivity+'_accuracy.mat')
+df_selected_subj = pd.read_csv(SELECTED_SUBJECTS27, index_col=0)
 
 
 if   (resolution=='83' or resolution=='68'): idx=0; 
@@ -59,22 +59,13 @@ elif (resolution=='129' or resolution=='114'): idx=1;
 elif (resolution=='234' or resolution=='219'): idx=2;
 
 if connectivity=="Structural":
-	raw_mat = scipy.io.loadmat(RAW_FEATURES+'sc_connectome_p'+resolution+'_state.mat');print("Structural");
 	prefix = 'sc_'+resolution
 
 elif connectivity=="Functional":
-	raw_mat = scipy.io.loadmat(RAW_FEATURES+'fc_connectome_p'+resolution+'_state.mat');print("Functional");
 	prefix = 'fc_'+resolution
 
 elif connectivity=="Multimodal":
 	multi_prefix = rank_mat[2:4]
-	if multi_prefix =='sc':
-	   raw_mat  = scipy.io.loadmat(RAW_FEATURES+'sc_connectome_p'+resolution+'_state.mat');print("Multimodal Structural");
-	   raw_mat2 = scipy.io.loadmat(RAW_FEATURES+'fc_connectome_p'+resolution+'_state.mat');print("Multimodal Functional");
-	else:
-	   raw_mat  = scipy.io.loadmat(RAW_FEATURES+'fc_connectome_p'+resolution+'_state.mat');print("Multimodal Functional");
-	   raw_mat2 = scipy.io.loadmat(RAW_FEATURES+'sc_connectome_p'+resolution+'_state.mat');print("Structural Functional");
-
 	prefix = 'mm_'+resolution
 	
 #----------------------------------------------------------------------------	
@@ -82,13 +73,12 @@ rank_matrices 	=  data_mat[prefix+'_'+'Matrices']
 R_rank   		=  rank_matrices[0][rank_mat][0]	
 R_rank2   		=  rank_matrices[0]['A_fc'+rank_mat[4:]][0]	
 
-mask             =  (R_rank>50)*1
+mask            =  (R_rank>50)*1
 
-mat_metadata	= scipy.io.loadmat(ID_NODES_PATH) 				# Load id names
-acore_hbm2015	= scipy.io.loadmat('Data Description/acore_HBM2015-1.mat')['acore_HBM2015'].ravel().astype('int')	# Load a-core Griffa et al.
+mat_metadata	 = scipy.io.loadmat(ID_NODES_PATH) 				# Load id names
 df_node_labels   = get_node_labels(mat_metadata,idx) # getting node labels based in id
 
-core 			=  set(list(zip(*nx.Graph(R_rank).edges())[0]))
+core 			 =  set(list(zip(*nx.Graph(R_rank).edges())[0]))
 #----------------------------------------------------------------------------
 print(RAW_FEATURES);print(resolution);print(rank_mat);print(prefix);
 
@@ -106,7 +96,7 @@ for i, (grouped_name, grouped_gdf) in enumerate(df_grouped):
 	
 	# Horizontal
 	ax = plt.subplot(2, 1, i + 1) # nrows, ncols, axes position
-	barlist = grouped_gdf.sort_values(by='mask', ascending=False).plot(kind='bar', fontsize=10, grid=False, cmap='Set2', ax=ax, x='node_label') # Paired, Set2
+	barlist = grouped_gdf.sort_values(by='node_label', ascending=True).plot(kind='bar', fontsize=10, grid=False, cmap='Set2', ax=ax, x='node_label') # Paired, Set2
 	plt.hlines(grouped_gdf['mask'].mean(), xmin=-1, xmax=80, linestyles='dashed')
 
 	ax.set_facecolor((1.0, 1.0, 1.0))

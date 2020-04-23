@@ -11,7 +11,8 @@ from feature_selection_stability import Kuncheva_index
 from sklearn.pipeline import Pipeline
 import argparse
 import pandas as pd
-
+from paths import * 
+from functions import * 
 """
 connectivity: Structural, Functional, Multimodal
 resolutions:  83 , 129,  234
@@ -21,49 +22,12 @@ python mainScript_abs.py -connectivity Structural -resolution 83
 
 """
 
-#--------------------------------------------------------------------------------------------------
-SAVING_MAT    = 'mat/abs_subcortical/'
-FC_FEATURES   = 'FC/abs_subcortical/'
-RAW_FEATURES  = 'raw_matrices/abs_subcortical/'
+subjects_indx    = pd.read_csv(SELECTED_SUBJECTS27, header=None)
+recall_scorer    = make_scorer(recall_score,average='macro') # recall__score with average=macro is the balanced accuracy
 
-
-#--------------------------------------------------------------------------------------------------
-df_selected_subj = pd.read_csv('Data Description/selected_subjects_27.csv', index_col=0)
-SC_FEATURES      = 'SC/'
-RESULTS          = 'results/'
-
-#--------------------------------------------------------------------------------------------------
-
-recall_scorer = make_scorer(recall_score,average='macro') # recall__score with average=macro is the balanced accuracy
-
-def tic():
-	#Homemade version of matlab tic and toc functions
-	import time
-	global startTime_for_tictoc
-	startTime_for_tictoc = time.time()
-
-def toc():
-	import time
-	if 'startTime_for_tictoc' in globals():
-		print "Elapsed time is " + str(time.time() - startTime_for_tictoc) + " seconds."
-	else:
-		print "Toc: start time not set"
-
-def index2xyz(k,N):
-	uppertriangle = (N*N + N)/2
-	x = int((k+1)/uppertriangle)
-	rem = (k+1) - x*uppertriangle
- 
-	if rem == 0:
-	   return (N-1,N-1)
-
-	for i in range(1,N+1):
-		if i*N - ((i-1)*i)/2 == rem:
-		   return (i-1,N-1)
-		if i*N - ((i-1)*i)/2 > rem:
-		   z = rem - ((i-1)*N - ((i-2)*(i-1))/2)
-		   return (i-1,i+z-2) 
-
+"""
+Auxiliar functions
+"""
 def get_attrib(attrib):
 	selected_features = []
 	for k in bestFeatures.keys():
@@ -145,7 +109,9 @@ def parse_args():
 	parser.add_argument('-connectivity', dest='connectivity', help='structural or functional')
 	parser.add_argument('-resolution', dest='resolution', help='dimension')		
 	return parser.parse_args()
-	
+
+#-------------------------------------------------------------------	
+
 """
 Defining parameters
 
@@ -210,7 +176,7 @@ print prefix
 print(connectivity)
 print(resolution)
 
-features = features[df_selected_subj.index.values]
+features = features[subjects_indx.values.ravel()]
 
 labels = np.ones(27+27)
 for i in range(27,labels.shape[0]):

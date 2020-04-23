@@ -1,10 +1,11 @@
+from feature_selection_stability import Kuncheva_index
 import numpy as np
 import scipy.io
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from paths import *
-#plt.style.use('ggplot')
+
 
 """
 Plotting accuracy and stability for different parameters. Figures will be saved in the results/ folder.
