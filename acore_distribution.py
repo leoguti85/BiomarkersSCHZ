@@ -80,7 +80,7 @@ df_node_labels   = get_node_labels(mat_metadata,idx) # getting node labels based
 
 core 			 =  set(list(zip(*nx.Graph(R_rank).edges())[0]))
 #----------------------------------------------------------------------------
-print(RAW_FEATURES);print(resolution);print(rank_mat);print(prefix);
+print(resolution);print(rank_mat);print(prefix);
 
 
 
