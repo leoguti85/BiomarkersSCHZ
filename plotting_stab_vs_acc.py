@@ -1,9 +1,12 @@
 import scipy.io as sco
 import numpy as np
-from paths import *
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib as mpl
+from paths import *
+"""
+Run python plotting_stab_vs_acc.py
+"""
 
 def get_max_vals(measure):
 
