@@ -43,6 +43,11 @@ Best tradeoff between accuracy and stability.
 python plotting_stab_vs_acc.py
 ```
 <p align="center">
-<img src="results/acc_vs_stab.png" width="60%">
+<img src="results/acc_vs_stab.png" width="40%">
 </p>
 
+### Compute the affected core (a-core) in schizophrenia
+```
+python acore_distribution.py -connectivity Multimodal -resolution 83 -type Structural
+```
+This script will compute the a-core of the structural biomarkers extracted from the Multimodal connectome of parcellation 83 x 83.
