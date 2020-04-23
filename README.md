@@ -27,13 +27,22 @@ python plotting_accuracy_stability.py
 <img src="results/sc_83.png" width="30%">
 </p>
 
-You can also plot the selected biomarkers and visualize them as a 'connectivity' matrix:
+You can also plot the selected biomarkers and visualize them as a 'connectivity' matrices:
 
 ```
 python plotting_selected_features_matrices.py
 ```
 <p align="center">
-<img src="results/m_sc_83.png" width="30%">
+<img src="results/m_sc_83.png" width="60%">
 </p>
 
+
+### Accuracy versus stability of biomarkers
+Best tradeoff between accuracy and stability.
+```
+python plotting_stab_vs_acc.py
+```
+<p align="center">
+<img src="results/acc_vs_stab.png" width="60%">
+</p>
 
