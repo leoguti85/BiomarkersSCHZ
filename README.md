@@ -1,4 +1,6 @@
 ## Stable Biomarker Identification For Predicting Schizophrenia in the Human Connectome
+Leonardo Gutiérrez-Gómez,  Jakub Vohryzek, Benjamin Chiêm, Philipp S. Baumann, Philippe Conus, Kim Do Cuenod, Patric Hagmann and Jean-Charles Delvenne.
+
 
 Here you can find the scripts to reproduce the results of our paper. Check out the preprint [here](https://www.biorxiv.org/content/10.1101/711135v1)
 
