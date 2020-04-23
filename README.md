@@ -25,6 +25,7 @@ Plotting accuracy and stability for different parameters. Figures will be saved 
 ```
 python plotting_accuracy_stability.py
 ```
+example, structural 83 x 83 connectome:
 <p align="center">
 <img src="results/sc_83.png" width="30%">
 </p>
