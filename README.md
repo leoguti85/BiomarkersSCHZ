@@ -52,6 +52,9 @@ python acore_distribution.py -connectivity Multimodal -resolution 83 -type Struc
 ```
 This script will compute the a-core of the structural biomarkers extracted from the Multimodal connectome of parcellation 83 x 83.
 
+### Citing
+Soon bibtex entry.
+
 ### Others
 
 Please send any questions you might have about the code and/or the paper to leonardo.gutierrez@list.lu, jakub.vohryzek@queens.ox.ac.uk or benjamin.chiem@uclouvain.be.
