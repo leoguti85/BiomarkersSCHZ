@@ -15,4 +15,16 @@ Example,
 ```
 python mainScript_abs.py -connectivity Structural -resolution 83
 ```
-Will run RFE-SVM on structural connectomes with 83 x 83 parcellations. The results are saved in the *mat/* folder.
+Will run RFE-SVM on structural connectomes with 83 x 83 parcellations. The results are saved in the *mat/abs_subcortical* folder.
+
+### Accuray versus stability plots
+Plotting accuracy and stability for different parameters. Figures will be saved in the *results/* folder as .png files.
+
+```
+python plotting_accuracy_stability.py
+```
+<p align="center">
+<img src="results/sc_83.png">
+</p>
+
+
