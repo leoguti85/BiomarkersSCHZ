@@ -47,7 +47,7 @@ def plot_many_matrices(y, m_code_prefix='A', tit='Selected Features'):
 			break;
 
 	fig.suptitle("Selected Features, "+tit, fontsize=18)
-	plt.savefig(RESULTS+tit+'.png')
+	plt.savefig(RESULTS+'m_'+tit+'.png')
 	plt.close(fig)
 
 
