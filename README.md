@@ -1,4 +1,6 @@
 ## Stable Biomarker Identification For Predicting Schizophrenia in the Human Connectome
+*Leonardo Gutiérrez-Gómez,  Jakub Vohryzek, Benjamin Chiêm, Philipp S. Baumann, Philippe Conus, Kim Do Cuenod, Patric Hagmann and Jean-Charles Delvenne.*
+
 
 Here you can find the scripts to reproduce the results of our paper. Check out the preprint [here](https://www.biorxiv.org/content/10.1101/711135v1)
 
@@ -23,6 +25,7 @@ Plotting accuracy and stability for different parameters. Figures will be saved 
 ```
 python plotting_accuracy_stability.py
 ```
+example, structural 83 x 83 connectome:
 <p align="center">
 <img src="results/sc_83.png" width="30%">
 </p>
@@ -43,6 +46,18 @@ Best tradeoff between accuracy and stability.
 python plotting_stab_vs_acc.py
 ```
 <p align="center">
-<img src="results/acc_vs_stab.png" width="60%">
+<img src="results/acc_vs_stab.png" width="40%">
 </p>
 
+### Compute the affected core (a-core) in schizophrenia
+```
+python acore_distribution.py -connectivity Multimodal -resolution 83 -type Structural
+```
+This script will compute the a-core of the structural biomarkers extracted from the Multimodal connectome of parcellation 83 x 83.
+
+### Citing
+Soon bibtex entry.
+
+### Others
+
+Please send any questions you might have about the code and/or the paper to leonardo.gutierrez@list.lu, jakub.vohryzek@queens.ox.ac.uk or benjamin.chiem@uclouvain.be.
