@@ -3,7 +3,7 @@
 DIMS          = ['83','129','234'] # subcortical
 
 SAVING_MAT    = 'mat/abs_subcortical/'  # Results after running the mainScript_abs
-FC_FEATURES   = 'FC/abs_subcortical/'	# Functional matrices in a vectorized format
+FC_FEATURES   = 'FC/'					# Functional matrices in a vectorized format
 SC_FEATURES   = 'SC/'					# Structural matrices in a vectorized format
 
 #-------------------------------------------------------
