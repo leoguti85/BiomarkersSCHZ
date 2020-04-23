@@ -17,14 +17,23 @@ python mainScript_abs.py -connectivity Structural -resolution 83
 ```
 Will run RFE-SVM on structural connectomes with 83 x 83 parcellations. The results are saved in the *mat/abs_subcortical* folder.
 
-### Accuray versus stability plots
+### Plotting results
 Plotting accuracy and stability for different parameters. Figures will be saved in the *results/* folder as .png files.
 
 ```
 python plotting_accuracy_stability.py
 ```
 <p align="center">
-<img src="results/sc_83.png">
+<img src="results/sc_83.png" width="30%">
+</p>
+
+You can also plot the selected biomarkers and visualize them as a 'connectivity' matrix:
+
+```
+python plotting_selected_features_matrices.py
+```
+<p align="center">
+<img src="results/m_sc_83.png" width="30%">
 </p>
 
 
